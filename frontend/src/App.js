@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import TodosList from './components/TodosList';
 
 const AppContainer = styled.div`
   text-align: center;
@@ -29,9 +30,7 @@ class App extends Component {
             Welcome to React
           </AppTitle>
         </AppHeader>
-        <AppIntro>
-          Intro
-        </AppIntro>
+        <TodosList todos={['First todo', 'This is awesome', 'etc']}/>
       </AppContainer>
     );
   }
