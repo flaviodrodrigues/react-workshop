@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
-import { Item, SquareButton } from './ui';
+import { Item, Button, SquareButton } from './ui';
+import { Link } from '@reach/router';
 
 export default class TodoItem extends Component {
   render() {
     const {
       completed,
       text,
+      id,
     } = this.props.todo;
     const {
       toggle,
@@ -14,8 +16,13 @@ export default class TodoItem extends Component {
 
     return (
       <Item completed={completed}>
-        <span onClick={toggle}>{text}</span>
-        <SquareButton onClick={remove}>X</SquareButton>
+        <Link to={`edit/${id}`}>
+          <span>{text}</span>
+        </Link>
+        <div>
+          <Button onClick={toggle}>{completed ? 'Not Done' : 'Done'}</Button>
+          <SquareButton onClick={remove}>X</SquareButton>
+        </div>
       </Item>
     );
   }

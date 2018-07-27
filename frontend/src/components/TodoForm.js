@@ -7,6 +7,12 @@ export default class TodoForm extends Component {
     text: '',
   }
 
+  componentDidMount() {
+    this.setState({
+      text: this.props.text || '',
+    })
+  }
+
   handleChange = (e) => {
     this.setState({
       text: e.target.value,

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import Todos from './containers/Todos';
+import EditTodo from './containers/EditTodo';
+import { Router } from '@reach/router';
 
 const AppContainer = styled.div`
   text-align: center;
@@ -26,7 +28,10 @@ class App extends Component {
             Welcome to React
           </AppTitle>
         </AppHeader>
-        <Todos />
+        <Router>
+          <Todos path="/" />
+          <EditTodo path="edit/:id" />
+        </Router>
       </AppContainer>
     );
   }

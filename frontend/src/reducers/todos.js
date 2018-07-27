@@ -12,6 +12,12 @@ const toggleTodo = (todos, id) => {
   });
 }
 
+const updateTodo = (todos, id, text) => {
+  return todos.map((todo) => {
+    return todo.id === id ? {...todo, text } : todo;
+  });
+}
+
 const removeTodo = (todos, id) => {
   const index = todos.findIndex(todo => todo.id === id);
 
@@ -36,6 +42,11 @@ export default function(state= { items: [] }, action) {
     case 'REMOVE_TODO':
       return {
         items: removeTodo(state.items, action.id),
+      }
+
+    case 'UPDATE_TODO':
+      return {
+        items: updateTodo(state.items, action.id, action.text),
       }
 
     default:
