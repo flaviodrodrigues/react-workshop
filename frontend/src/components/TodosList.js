@@ -12,7 +12,7 @@ export default class TodosList extends Component {
 
     return (
       <List>
-        {todos.map((todo, index) => <TodoItem key={index} todo={todo} toggle={() => toggleTodo(index)} remove={() => removeTodo(index)} />)}
+        {todos.map((todo) => <TodoItem key={todo.id} todo={todo} toggle={() => toggleTodo(todo.id)} remove={() => removeTodo(todo.id)} />)}
       </List>
     );
   }
