@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Item, List } from './ui';
+import { List } from './ui';
+import TodoItem from './TodoItem';
 
 export default class TodosList extends Component {
   render() {
@@ -9,7 +10,7 @@ export default class TodosList extends Component {
 
     return (
       <List>
-        {todos.map(todo => <Item>{todo}</Item>)}
+        {todos.map(todo => <TodoItem todo={todo} />)}
       </List>
     );
   }

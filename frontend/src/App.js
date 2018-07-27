@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import TodosList from './components/TodosList';
+import { Container } from './components/ui';
 
 const AppContainer = styled.div`
   text-align: center;
@@ -17,11 +18,24 @@ const AppTitle = styled.h1`
   font-size: 1.5em;
 `
 
-const AppIntro = styled.p`
-  font-size: large;
-`
-  
 class App extends Component {
+  state = {
+    todos: [
+      {
+        text: 'First todo',
+        completed: true,
+      },
+      {
+        text: 'This is awesome',
+        completed: false,
+      },
+      {
+        text: 'etc',
+        completed: true,
+      },
+    ]
+  }
+
   render() {
     return (
       <AppContainer>
@@ -30,7 +44,9 @@ class App extends Component {
             Welcome to React
           </AppTitle>
         </AppHeader>
-        <TodosList todos={['First todo', 'This is awesome', 'etc']}/>
+        <Container>
+          <TodosList todos={this.state.todos}/>
+        </Container>
       </AppContainer>
     );
   }
