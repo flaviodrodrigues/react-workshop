@@ -7,11 +7,15 @@ export default class TodoItem extends Component {
       completed,
       text,
     } = this.props.todo;
+    const {
+      toggle,
+      remove,
+    } = this.props;
 
     return (
       <Item completed={completed}>
-        <span>{text}</span>
-        <SquareButton>X</SquareButton>
+        <span onClick={toggle}>{text}</span>
+        <SquareButton onClick={remove}>X</SquareButton>
       </Item>
     );
   }

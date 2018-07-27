@@ -49,6 +49,25 @@ class App extends Component {
     });
   }
 
+  toggleTodo = (id) => {
+    const todos = this.state.todos.map((todo, index) => {
+      return index === id ? {...todo, completed: !todo.completed} : todo;
+    });
+
+    this.setState({ todos });
+  }
+
+  removeTodo = (id) => {
+    const todos = this.state.todos;
+
+    this.setState({
+      todos: [
+        ...todos.slice(0, id),
+        ...todos.slice(id + 1)  
+      ]
+    });
+  }
+
   render() {
     return (
       <AppContainer>
@@ -61,7 +80,7 @@ class App extends Component {
           <TodoForm addTodo={this.addTodo} />
         </FormContainer>
         <Container>
-          <TodosList todos={this.state.todos}/>
+          <TodosList todos={this.state.todos} toggleTodo={this.toggleTodo} removeTodo={this.removeTodo} />
         </Container>
       </AppContainer>
     );
