@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import TodosList from './components/TodosList';
-import { Container } from './components/ui';
+import TodoForm from './components/TodoForm';
+import { Container, FormContainer } from './components/ui';
 
 const AppContainer = styled.div`
   text-align: center;
@@ -36,6 +37,18 @@ class App extends Component {
     ]
   }
 
+  addTodo = (todo) => {
+    this.setState({
+      todos: [
+        ...this.state.todos,
+        {
+          text: todo,
+          completed: false
+        }
+      ]
+    });
+  }
+
   render() {
     return (
       <AppContainer>
@@ -44,6 +57,9 @@ class App extends Component {
             Welcome to React
           </AppTitle>
         </AppHeader>
+        <FormContainer>
+          <TodoForm addTodo={this.addTodo} />
+        </FormContainer>
         <Container>
           <TodosList todos={this.state.todos}/>
         </Container>

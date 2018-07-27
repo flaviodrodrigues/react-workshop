@@ -10,7 +10,7 @@ export default class TodosList extends Component {
 
     return (
       <List>
-        {todos.map(todo => <TodoItem todo={todo} />)}
+        {todos.map((todo, index) => <TodoItem key={index} todo={todo} />)}
       </List>
     );
   }
